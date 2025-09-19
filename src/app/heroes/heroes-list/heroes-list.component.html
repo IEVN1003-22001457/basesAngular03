@@ -42,7 +42,7 @@
 
         </thead>
         <tbody>
-          <tr *ngFor="let heroe of heroes">
+          <tr *ngFor="let heroe of heroes | heroFilter:listFilter">
             <td>
               <img *ngIf="muestraImage"
                    [src]="heroe.imagen"
