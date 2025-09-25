@@ -1,0 +1,67 @@
+<div class="container">
+  <form class="row mt-5 mb-5">
+    <div class="col-5">
+      <div class="mb-3">
+        <h1>Entradas</h1>
+        <div class="form-group pt-4">
+          <label for="form-label">Nombre</label>
+          <input type="" class="form-control" [(ngModel)]="nombre" name="nombre"
+          id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Nombre">
+        </div>
+
+        <hr>
+
+        <div class="form-group">
+          <label for="form-label">Cantidad de Compradores</label>
+          <input type="number" class="form-control" [(ngModel)]="compradores" name="compradores"
+          id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Número de Compradores">
+        </div>
+
+        <hr>
+        <div class="">
+          <label for="" class="me-5">Tarjeta Cineco</label>
+
+          <input type="radio" name="cineco" value = 0 [(ngModel)]="cineco" > No
+          <input type="radio" name="cineco" value = 1 [(ngModel)]="cineco" > Si
+
+        </div>
+        <hr>
+
+        <div class="form-group">
+          <label for="form-label">Cantidad De Boletas</label>
+          <input type="number" class="form-control" [(ngModel)]="boletas" name="boletas"
+          id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Descuento en compra si se cumple condiciones">
+        </div>
+    </div>
+    </div>
+    <div class="col-5 ms-5">
+      <div class="mb-3">
+        <h1>Salidas</h1>
+        <div class="form-group pt-4">
+
+          <hr>
+          <label for="">{{nombre}}</label>
+          <hr>
+          <label for="" >{{bposibles}}</label>
+          <hr>
+          <label for="form-label">Valor a Pagar</label>
+          <input type="" class="form-control"
+          id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="{{resultado}}">
+        </div>
+      </div>
+    </div>
+
+    <div class="col-5 m-auto">
+      <div class="mb-3">
+        <h1>Acciones</h1>
+        <div class="form-group pt-4">
+          <button (click)="Calcular()" type="submit" class="btn btn-primary">Calcular</button>
+          <button type="" class="btn btn-primary ms-5">Salir</button>
+        </div>
+      </div>
+    </div>
+
+
+  </form>
+
+</div>

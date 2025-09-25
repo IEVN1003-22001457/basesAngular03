@@ -1,0 +1,101 @@
+<p>resistencias works!</p>
+<form class="container">
+  <div class="row justify-content-center bg-black bg-opacity-10 rounded-5 shadow pt-5 pb-5 mb-5">
+
+    <div class="col-3">
+    <h3>1ra Banda</h3>
+    <table class="container">
+      <tr class="row justify-content-center p-1 border rounded-5 mb-1"
+        *ngFor="let valor of valores"
+        [id]="valor.color"
+        >
+        <td class="col-2">
+          <input type="radio" name="banda1" [value]="valor.num" [(ngModel)]="banda1" class="form-check-input">
+        </td>
+        <td class="col-10 fw-bold">{{valor.num}}</td>
+      </tr>
+
+    </table>
+    </div>
+
+    <!-- Segunda Banda /////////////////////////////////////////////////////////////////////////////////////////////////////-->
+    <div class="col-3 me-5 ms-5">
+    <h3>2da Banda</h3>
+    <table class="container">
+      <tr class="row justify-content-center p-1 border rounded-5 mb-1"
+        *ngFor="let valor of valores"
+        [id]="valor.color"
+      >
+        <td class="col-2">
+          <input type="radio" name="banda2" [value]="valor.num" [(ngModel)]="banda2">
+        </td>
+        <td class="col-10 fw-bold">{{valor.num}}</td>
+      </tr>
+
+    </table>
+    </div>
+
+    <!-- Tercera Banda ///////////////////////////////////////////////////////////////////////////////////////////////////////-->
+    <div class="col-3">
+    <h3>3ra Banda</h3>
+    <table class="container">
+      <tr class="row justify-content-center p-1 border rounded-5 mb-1"
+        *ngFor="let valor of valores"
+        [id]="valor.color"
+      >
+        <td class="col-2">
+          <input type="radio" name="banda3" [value]="valor.num2" [(ngModel)]="banda3">
+        </td>
+        <td class="col-10 fw-bold">x{{valor.num2}}</td>
+      </tr>
+
+    </table>
+    </div>
+
+
+    <!-- Tolerancia ///////////////////////////////////////////////////////////////////////////////////////////////////////-->
+    <div class="col-3">
+    <h3>Tolerancia</h3>
+    <table class="container">
+      <tr class="row justify-content-center p-1 border rounded-5 mb-1" id="gold">
+        <td class="col-2">
+          <input type="radio" name="tolerancia" value="0.05" [(ngModel)]="tolerancia">
+        </td>
+        <td class="col-10 fw-bold">Dorado 5%</td>
+      </tr>
+      <tr class="row justify-content-center p-1 border rounded-5 mb-1" id="plata">
+        <td class="col-2">
+          <input type="radio" name="tolerancia" value="0.10" [(ngModel)]="tolerancia">
+        </td>
+        <td class="col-10 fw-bold">Plata 10%</td>
+      </tr>
+
+    </table>
+    </div>
+
+
+
+    <div class="col-12 container row justify-content-center mt-5">
+    <div class="col-6 text-center">
+          <button (click)="Calcular()" type="submit" class="btn btn-primary">Calcular</button>
+          <div class="mt-2">
+            <label for="">Valores seleccionados:</label> {{banda1}}  ||  {{banda2}}  ||  {{banda3}}   ||  {{tolerancia}}
+          </div>
+          <div class="mt-2">
+            <label for="">Valor Homs:</label> <input type="text" class="ms-2 border-0 rounded" [value]="homsnormal">
+          </div>
+          <div class="mt-2">
+            <label for="">Homs mínimos:</label> <input type="text" class="ms-2 border-0 rounded" [value]="minimo">
+          </div>
+          <div class="mt-2">
+            <label for="">Homs máximos:</label> <input type="text" class="ms-2 border-0 rounded" [value]="maximo">
+          </div>
+    </div>
+  </div>
+
+
+  </div>
+
+
+
+</form>
