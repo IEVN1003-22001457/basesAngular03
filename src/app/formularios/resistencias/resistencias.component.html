@@ -2,6 +2,7 @@
 <form class="container">
   <div class="row justify-content-center bg-black bg-opacity-10 rounded-5 shadow pt-5 pb-5 mb-5">
 
+    <!-- Primera Banda /////////////////////////////////////////////////////////////////////////////////////////////////////-->
     <div class="col-3">
     <h3>1ra Banda</h3>
     <table class="container">
@@ -9,10 +10,13 @@
         *ngFor="let valor of valores"
         [id]="valor.color"
         >
+        <!--
+        Operador ternario / Esta parte funciona para que ponga el id solo al input seleccionado
+        [id]="banda1 === valor.num ? valor.color : '' " -->
         <td class="col-2">
           <input type="radio" name="banda1" [value]="valor.num" [(ngModel)]="banda1" class="form-check-input">
         </td>
-        <td class="col-10 fw-bold">{{valor.num}}</td>
+        <td class="col-10 fw-bold">{{valor.num}} | {{valor.color}}</td>
       </tr>
 
     </table>
@@ -26,10 +30,11 @@
         *ngFor="let valor of valores"
         [id]="valor.color"
       >
+      <!-- [id]="banda2 === valor.num ? valor.color : ''" -->
         <td class="col-2">
-          <input type="radio" name="banda2" [value]="valor.num" [(ngModel)]="banda2">
+          <input type="radio" name="banda2" [value]="valor.num" [(ngModel)]="banda2" class="form-check-input">
         </td>
-        <td class="col-10 fw-bold">{{valor.num}}</td>
+        <td class="col-10 fw-bold">{{valor.num}} | {{valor.color}}</td>
       </tr>
 
     </table>
@@ -43,31 +48,30 @@
         *ngFor="let valor of valores"
         [id]="valor.color"
       >
+      <!-- [id]="banda3 === valor.num2 ? valor.color : ''" -->
         <td class="col-2">
-          <input type="radio" name="banda3" [value]="valor.num2" [(ngModel)]="banda3">
+          <input type="radio" name="banda3" [value]="valor.num2" [(ngModel)]="banda3" class="form-check-input">
         </td>
-        <td class="col-10 fw-bold">x{{valor.num2}}</td>
+        <td class="col-10 fw-bold">x{{valor.num2}} | {{valor.color}}</td>
       </tr>
 
     </table>
     </div>
 
 
-    <!-- Tolerancia ///////////////////////////////////////////////////////////////////////////////////////////////////////-->
+    <!-- Tolerancia //////////////////////////////////////////////////////////////////////////////////////////////////////////-->
     <div class="col-3">
     <h3>Tolerancia</h3>
     <table class="container">
-      <tr class="row justify-content-center p-1 border rounded-5 mb-1" id="gold">
+      <tr class="row justify-content-center p-1 border rounded-5 mb-1"
+          *ngFor="let valor of valores2"
+          [id]="valor.color"
+          >
+         <!--  [id]="tolerancia === valor.num ? valor.color : ''" -->
         <td class="col-2">
-          <input type="radio" name="tolerancia" value="0.05" [(ngModel)]="tolerancia">
+          <input type="radio" name="tolerancia" [value]="valor.num" [(ngModel)]="tolerancia" class="form-check-input">
         </td>
-        <td class="col-10 fw-bold">Dorado 5%</td>
-      </tr>
-      <tr class="row justify-content-center p-1 border rounded-5 mb-1" id="plata">
-        <td class="col-2">
-          <input type="radio" name="tolerancia" value="0.10" [(ngModel)]="tolerancia">
-        </td>
-        <td class="col-10 fw-bold">Plata 10%</td>
+        <td class="col-10 fw-bold">{{valor.nombre}} | {{valor.color}}</td>
       </tr>
 
     </table>
@@ -78,18 +82,45 @@
     <div class="col-12 container row justify-content-center mt-5">
     <div class="col-6 text-center">
           <button (click)="Calcular()" type="submit" class="btn btn-primary">Calcular</button>
-          <div class="mt-2">
-            <label for="">Valores seleccionados:</label> {{banda1}}  ||  {{banda2}}  ||  {{banda3}}   ||  {{tolerancia}}
+          <div class="container mt-5"
+                *ngIf="calculado"
+          >
+            <div class="row justify-content-center border border-white border-4 rounded-1">
+              <div class="col border-4 border-end border-white d-flex align-items-center justify-content-center"
+                  [id]="colorBanda1">
+                <label class="fw-bold">{{ banda1 }}</label>
+              </div>
+
+              <div class="col border-4 border-end border-white d-flex align-items-center justify-content-center"
+                  [id]="colorBanda2">
+                <label class="fw-bold">{{ banda2 }}</label>
+              </div>
+
+              <div class="col border-4 border-end border-white d-flex align-items-center justify-content-center"
+                  [id]="colorBanda3">
+                <label class="fw-bold">{{ banda3 }}</label>
+              </div>
+
+              <div class="col border-4 border-end border-white d-flex align-items-center justify-content-center"
+                  [id]="colorTolerancia">
+                <label class="fw-bold">{{ tolerancia }}</label>
+              </div>
+              <div class="col border-4 border-end border-white">
+                <label class="fw-bold">Valor Homs: </label>
+                <label class="fw-bold">{{homsnormal}}</label>
+              </div>
+              <div class="col border-4 border-end border-white">
+                <label class="fw-bold">Homs mínimos: </label>
+                <label class="fw-bold">{{minimo}}</label>
+              </div>
+              <div class="col">
+               <label class="fw-bold">Homs máximos: </label>
+               <label class="fw-bold">{{maximo}}</label>
+              </div>
+
+            </div>
           </div>
-          <div class="mt-2">
-            <label for="">Valor Homs:</label> <input type="text" class="ms-2 border-0 rounded" [value]="homsnormal">
-          </div>
-          <div class="mt-2">
-            <label for="">Homs mínimos:</label> <input type="text" class="ms-2 border-0 rounded" [value]="minimo">
-          </div>
-          <div class="mt-2">
-            <label for="">Homs máximos:</label> <input type="text" class="ms-2 border-0 rounded" [value]="maximo">
-          </div>
+
     </div>
   </div>
 
